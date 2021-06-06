@@ -10,9 +10,12 @@ const getAboutPage = (req, res) => {
         page_name: "about"
     });
 
-} 
+}
 
-module.exports={
+
+
+module.exports = {
     getIndexPage,
-    getAboutPage
+    getAboutPage,
+    
 }

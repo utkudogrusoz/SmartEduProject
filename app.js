@@ -1,28 +1,32 @@
 const express = require('express');
-const mongoose=require('mongoose');
+const mongoose = require('mongoose');
 const pageRoute = require('./routes/pageRoute');
-const courseRoute=require('./routes/courseRoute');
+const courseRoute = require('./routes/courseRoute');
 
 
 const app = express();
 
 // connect db 
 
-mongoose.connect('mongodb://localhost/smartedu-db',{ 
-    useNewUrlParser:true,
-    useUnifiedTopology:true,
-    useFindAndModify:false,
-    useCreateIndex:true
-}).then(()=>{
+mongoose.connect('mongodb://localhost/smartedu-db', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true
+}).then(() => {
     console.log('db connected successfully');
 });
 
 //Template Engine
 
-app.set("view engine", "ejs"),
+app.set("view engine", "ejs");
 
-    //Middlewares Engine
-    app.use(express.static("public"));
+//Middlewares Engine
+app.use(express.static("public"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+
 
 //routers 
 app.use("/", pageRoute);
