@@ -24,7 +24,7 @@ const getCoursesPage = async (req, res) => {
 
         const categorySlug = req.query.categories;
 
-        const category =await  Category.findOne({ slug: categorySlug });
+        const category = await Category.findOne({ slug: categorySlug });
 
         let filter = {};
 
@@ -40,27 +40,31 @@ const getCoursesPage = async (req, res) => {
             courses: courses,
             page_name: 'courses'
 
-        })
+        });
+
+
 
     } catch (error) {
         res.status(400).json({
             status: 'fail',
 
-        })
+        });
     }
 
 }
 
 const getCourse = async (req, res) => {
     try {
+        const categories = await Category.find();
         const course = await Course.findOne({
             slug: req.params.slug
-        })
+        });
         res.status(201).render('course-single', {
+            categories: categories,
             course: course,
             page_name: 'courses'
 
-        })
+        });
 
     } catch (error) {
         res.status(400).json({

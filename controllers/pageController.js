@@ -12,10 +12,26 @@ const getAboutPage = (req, res) => {
 
 }
 
+const getregisterPage = (req, res) => {
+    res.status(200).render('register', {
+        page_name: "register"
+    });
+
+}
+
+const getLoginPage = (req, res) => {
+    res.status(200).render('login', {
+        page_name: "login"
+    });
+
+}
+
 
 
 module.exports = {
     getIndexPage,
     getAboutPage,
+    getregisterPage,
+    getLoginPage
     
 }
